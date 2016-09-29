@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progressBar"
+        android:layout_alignParentTop="true">
+
+        <include layout="@layout/no_connection_display" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:visibility="visible"
+            android:id="@+id/page_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="0dp"
+                android:visibility="visible" /><!-- Scrollbars has been removed -->
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        <include layout="@layout/xmpty_data_display" />
+
+        <include layout="@layout/progress_page_loading"/>
+
+    </FrameLayout>
+
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:indeterminate="false"
+        android:visibility="gone"
+        android:layout_above="@+id/line"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#d6d5d5"
+        android:layout_above="@+id/linearLayout"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:padding="8dp"
+        android:id="@+id/linearLayout"
+        android:gravity="center_vertical"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        >
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/edit_caption"
+            android:layout_weight="3"
+            android:hint="Add Caption"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColor="@color/colorUploadBtn"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_upload"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            style="@android:style/Widget.DeviceDefault.Button.Borderless.Small"
+            android:tint="@color/colorUploadBtn"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
